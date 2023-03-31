@@ -7,27 +7,38 @@
     <title>YAMANEKO</title>
 </head>
 <body>
-    <canvas id ="canvas001" ></canvas>
+    <canvas id ="canvas" ></canvas>
+    <button id="btn">
+        start
+</button>
     <script>
-        canvas001.width=1000;
-        canvas001.height=300;
-        window.onload = function() {
-      const ctx001 = canvas001.getContext("2d");//2次元描画
-      
-      ctx001.lineCap = "round"
-      ctx001.lineJoin = "round"
-      ctx001.lineWidth = 20;
-      ctx001.beginPath();
-      ctx001.moveTo(200,100);
-      ctx001.lineTo(100,35);
-      ctx001.lineTo(0,100);
-      ctx001.lineTo(200,200);
-      ctx001.lineTo(100,265);
-      ctx001.lineTo(0,200);
-      ctx001.stroke();
+      let canvas = document.querySelector('#canvas');
+let context = canvas.getContext('2d');
+
+let x = -50;
+function update(callback) {
+  // 現在の描画をクリアする
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // x（位置）の増加、キャンバスサイズを超えたら戻す
+  if (x <= canvas.width) {
+    x = x + 2;
+  } else {
+    x = -50;
+  }
+
+  // 描画
+  context.beginPath();
+  context.fillStyle = 'dodgerblue';
+  context.fillRect(x, 50, 50, 50);
 
 
-};
+  // updateを繰り返す
+  x==-50||window.requestAnimationFrame(update);
+}
+
+// updateの実行
+btn.onclick=_=>requestAnimationFrame(update);
     </script>
 
     
