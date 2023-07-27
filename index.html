@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YAMANEKO</title>
 </head>
+<style>
+  #btn{
+    display: absolute;
+  }
+</style>
 <body>
     <canvas id ="canvas" ></canvas>
     <button id="btn">
@@ -15,6 +20,16 @@
       let canvas = document.querySelector('#canvas');
 let context = canvas.getContext('2d');
 
+document.getElementById("btn").addEventListener("mouseover", function(){
+    var btn = document.getElementById("btn");
+    btn.style.opacity= 0
+    setTimeout(function(){
+        alert('ボタンないよ（泣）')
+    }, 100);
+})
+document.getElementById("btn").addEventListener("mouseout", function(){
+    //document.getElementById("btn").classList.remove("hover");
+})
 let x = -50;
 function update(callback) {
   // 現在の描画をクリアする
